@@ -12,7 +12,7 @@
 
 
 cp $1 ~/.gnome2/nautilus-scripts
-dir=(cd "/home/pooya/.gnome2/nautilus-scripts")
+dir=(cd "~/.gnome2/nautilus-scripts")
 "${dir[@]}"
 file=$(ls -t . | head -1)
 
@@ -27,12 +27,12 @@ do
 done 
 
 command="u1sdtool --publish-file="$file
-dir=(cd "/home/pooya/Ubuntu One/")
+dir=(cd "~/Ubuntu One/")
 "${dir[@]}"
 
 status=$($command)
 zenity --info --title="URL" --text="$status"
 
-dir=(cd "/home/pooya/.gnome2/nautilus-scripts")
+dir=(cd "~/.gnome2/nautilus-scripts")
 "${dir[@]}"
 rm $file
