@@ -5,4 +5,4 @@ A nautilus script to upload a specifc file into ubuntu one
 
 ## In Action
 
-> cp Cloud\ it ~/.gnome2/nautilus-scripts
+<cp Cloud\ it ~/.gnome2/nautilus-scripts>
