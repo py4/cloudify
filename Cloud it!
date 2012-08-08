@@ -1,0 +1,38 @@
+#!/bin/bash
+# Written by ibtkm @ zombie-geek.net in Aug of 2012
+# I live in ibtkm2009 at gmail avenue. 
+
+# $1 that is given by nautilus depends on the file path. some
+# times gets full destination and sometimes gets just a name
+
+# For publishing the file, the command should be executed in the ubuntu one 
+# folder so we should change place to there
+
+# Bugs: space in name
+
+
+cp $1 ~/.gnome2/nautilus-scripts
+dir=(cd "/home/pooya/.gnome2/nautilus-scripts")
+"${dir[@]}"
+file=$(ls -t . | head -1)
+
+cp $file ~/"Ubuntu One"
+
+status="$(u1sdtool --waiting)"
+while [ ${#status} != 0 ]
+do
+	echo "waiting"
+	echo $status
+	status="$(u1sdtool --waiting)"
+done 
+
+command="u1sdtool --publish-file="$file
+dir=(cd "/home/pooya/Ubuntu One/")
+"${dir[@]}"
+
+status=$($command)
+zenity --info --title="URL" --text="$status"
+
+dir=(cd "/home/pooya/.gnome2/nautilus-scripts")
+"${dir[@]}"
+rm $file
